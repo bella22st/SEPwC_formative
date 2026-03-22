@@ -10,13 +10,15 @@ def add_task(task):
     Return - nothing
     """
 
+    print("Your item is: " + str(task))
+
 def list_tasks():
     return
 
 
 def remove_task(index):
     return
-
+    
 def main():
     parser = argparse.ArgumentParser(description="Command-line Todo List")
     parser.add_argument(
