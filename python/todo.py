@@ -6,14 +6,39 @@ TASK_FILE = ".tasks.txt"
 def add_task(task):
     """Function: add_task
     
+    Adds a task to out save file
+
     Input - a task to add to the list
     Return - nothing
     """
 
     print("Your item is: " + str(task))
 
+    f = open(TASK_FILE, "a")
+    x = f.write(task + "\n")
+    f.close()
+
+    print("Wrote " + str(x) + " characters to the file")
+
+
 def list_tasks():
+    """Function: list_tasks
+
+    Lists all of the tasks saved to the file
+    
+    Input - nothing
+    Return - Nothing 
+    
+    """
+    f = open(TASK_FILE, "r")
+    lines = f.readlines()
+    f.close()
+
+
+
+
     return
+    
 
 
 def remove_task(index):
