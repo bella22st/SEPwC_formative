@@ -45,7 +45,20 @@ def list_tasks():
 
 
 def remove_task(index):
-    return
+    f = open(TASK_FILE, "r")
+    lines = f.readlines()
+    f.close()
+
+    if index < 1 or index > len(lines) : 
+        return 
+    lines.pop(index-1)
+    remove_task()
+
+    f = open(TASK_FILE, "w")
+    f.writelines(lines)
+    f.close()
+    
+    return 
     
 def main():
     parser = argparse.ArgumentParser(description="Command-line Todo List")
