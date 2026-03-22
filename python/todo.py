@@ -34,17 +34,13 @@ def list_tasks():
     lines = f.readlines()
     f.close()
 
-    # for i in range(len(lines)):
-    #     print(lines[i].strip())
+    result = " "
     i = 1  
     for line in lines:
-        print(str(i) + ". " + line.strip())
-        # print(f"{i}. {line.strip()}")
+        result += (str(i) + ". " + line.strip())
         i += 1
-    # print(lines)
-
-
-    return
+    
+    return result 
     
 
 
