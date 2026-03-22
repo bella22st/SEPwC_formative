@@ -12,13 +12,11 @@ def add_task(task):
     Return - nothing
     """
 
-    print("Your item is: " + str(task))
 
     f = open(TASK_FILE, "a")
     x = f.write(task + "\n")
     f.close()
 
-    print("Wrote " + str(x) + " characters to the file")
 
 
 def list_tasks():
@@ -34,13 +32,15 @@ def list_tasks():
     lines = f.readlines()
     f.close()
 
-    result = " "
-    i = 1  
+    result = ""
+    i = 1
     for line in lines:
-        result += (str(i) + ". " + line.strip())
+        line = line.strip()
+        if line == "":
+            continue  # skip blank lines
+        result += f"{i}. {line}\n"
         i += 1
-    
-    return result 
+    return result.strip()
     
 
 
