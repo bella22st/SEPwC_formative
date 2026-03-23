@@ -12,13 +12,10 @@ def add_task(task):
     Return - nothing
     """
 
+    with open(TASK_FILE, "a") as f:
+        f.write(task + "\n")
 
-    f = open(TASK_FILE, "a")
-    x = f.write(task + "\n")
-    f.close()
-
-
-
+        
 def list_tasks():
     """Function: list_tasks
 
@@ -28,41 +25,37 @@ def list_tasks():
     Return - Nothing 
     
     """
-    f = open(TASK_FILE, "r")
-    lines = f.readlines()
-    f.close()
 
-    result = ""
-    i = 1
-    for line in lines:
-        line = line.strip()
-        if line == "":
-            continue  # skip blank lines
-        result += f"{i}. {line}\n"
-        i += 1
-    return result.strip()
+
+    with open(TASK_FILE, "r") as f:
+        lines = f.readlines()
     
+    result = ""
+    for i, line in enumerate(lines, start=1):
+        if i == len(lines):
+            result += f"{i}. {line.strip()}"
+        else:
+            result += f"{i}. {line.strip()}\n"
+    return result
+
 
 
 def remove_task(index):
-    f = open(TASK_FILE, "r")
-    lines = f.readlines()
-    f.close()
     
-    # # remove empty lines
-    # lines = [line for line in lines if line.strip() != " "]
+    with open(TASK_FILE, "r") as f: 
+        lines = f.readlines()
     
     if index < 1 or index > len(lines) : 
         return 
     lines.pop(index-1)
     
 
-    f = open(TASK_FILE, "w")
-    f.writelines(lines)
-    f.close()
+    with open(TASK_FILE, "w") as f:
+        f.writelines(lines)
 
     return 
     
+
 def main():
     parser = argparse.ArgumentParser(description="Command-line Todo List")
     parser.add_argument(
