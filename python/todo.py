@@ -48,16 +48,19 @@ def remove_task(index):
     f = open(TASK_FILE, "r")
     lines = f.readlines()
     f.close()
-
+    
+    # # remove empty lines
+    # lines = [line for line in lines if line.strip() != " "]
+    
     if index < 1 or index > len(lines) : 
         return 
     lines.pop(index-1)
-    remove_task()
+    
 
     f = open(TASK_FILE, "w")
     f.writelines(lines)
     f.close()
-    
+
     return 
     
 def main():
