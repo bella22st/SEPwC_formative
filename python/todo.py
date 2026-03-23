@@ -1,6 +1,9 @@
+"""Simple command line todo list application"""
+
 import argparse
 
 TASK_FILE = ".tasks.txt"
+
 
 def add_task(task):
     """Function: add_task
@@ -20,7 +23,7 @@ def list_tasks():
     Lists all of the tasks saved to the file
     
     Input - nothing
-    Return - Nothing 
+    Return - result 
     
     """
 
@@ -37,6 +40,12 @@ def list_tasks():
 
 
 def remove_task(index):
+    """Function: remove a task by its index
+    
+    Input - a task to remove
+    Return - nothing
+    
+    """
     
     with open(TASK_FILE, "r", encoding="utf-8") as f:
         lines = f.readlines()
@@ -51,6 +60,7 @@ def remove_task(index):
     return
     
 def main():
+    """Handle command-line arguments and run the todo app."""
     parser = argparse.ArgumentParser(description="Command-line Todo List")
     parser.add_argument(
             "-a",
