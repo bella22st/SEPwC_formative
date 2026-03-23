@@ -1,5 +1,4 @@
 import argparse
-import os
 
 TASK_FILE = ".tasks.txt"
 
@@ -42,18 +41,18 @@ def list_tasks():
 
 def remove_task(index):
     
-    with open(TASK_FILE, "r") as f: 
+    with open(TASK_FILE, "r") as f:
         lines = f.readlines()
     
-    if index < 1 or index > len(lines) : 
-        return 
+    if index < 1 or index > len(lines):
+        return
     lines.pop(index-1)
     
 
     with open(TASK_FILE, "w") as f:
         f.writelines(lines)
 
-    return 
+    return
     
 
 def main():
