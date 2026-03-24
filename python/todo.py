@@ -7,7 +7,7 @@ TASK_FILE = ".tasks.txt"
 
 def add_task(task):
     """Function: add_task
-    
+
     Adds a task to out save file
 
     Input - a task to add to the list
@@ -21,15 +21,15 @@ def list_tasks():
     """Function: list_tasks
 
     Lists all of the tasks saved to the file
-    
+
     Input - nothing
-    Return - result 
-    
+    Return - result
+
     """
 
     with open(TASK_FILE, "r", encoding="utf-8") as f:
         lines = f.readlines()
-    
+
     result = ""
     for i, line in enumerate(lines, start=1):
         if i == len(lines):
@@ -41,24 +41,24 @@ def list_tasks():
 
 def remove_task(index):
     """Function: remove a task by its index
-    
+
     Input - a task to remove
     Return - nothing
-    
+
     """
-    
+
     with open(TASK_FILE, "r", encoding="utf-8") as f:
         lines = f.readlines()
-    
+
     if index < 1 or index > len(lines):
         return
     lines.pop(index-1)
-    
+
     with open(TASK_FILE, "w", encoding="utf-8") as f:
         f.writelines(lines)
 
     return
-    
+
 def main():
     """Handle command-line arguments and run the todo app."""
     parser = argparse.ArgumentParser(description="Command-line Todo List")
